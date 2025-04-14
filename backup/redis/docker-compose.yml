@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # Redis Server
+  redis:
+    image: redis:7.2-alpine
+    container_name: redis-server
+    hostname: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    #environment:
+     # - REDIS_PASSWORD=your_strong_password_here  # Đổi thành mật khẩu của bạn
+    command:
+      - redis-server
+      #  - --requirepass $${REDIS_PASSWORD}
+      - --appendonly yes
+    restart: unless-stopped
+    networks:
+      - redis-net
+
+#  # Redis CLI (Command Line Interface)
+#  redis-cli:
+#    image: redis:7.2-alpine
+#    container_name: redis-cli
+#    depends_on:
+#      - redis
+#    networks:
+#      - redis-net
+#    stdin_open: true
+#    tty: true
+#    command:
+#      - sh
+#      - -c 'sleep 2; redis-cli -h redis-server -a $${REDIS_PASSWORD}'
+#    environment:
+#      - REDIS_PASSWORD=your_strong_password_here
+
+  # Redis Insight (Web GUI)
+  redis-insight:
+    image: redislabs/redisinsight:1.14.0
+    container_name: redis-insight
+    hostname: redis-insight
+    ports:
+      - "8001:8001"
+    volumes:
+      - redis_insight_data:/db
+      - /tmp/redisinsight:/logs
+    environment:
+      - REDIS_PASSWORD=your_strong_password_here  # Thêm biến môi trường
+    depends_on:
+      - redis
+    networks:
+      - redis-net
+    restart: unless-stopped
+
+volumes:
+  redis_data:
+    driver: local
+  redis_insight_data:
+    driver: local
+
+networks:
+  redis-net:
+    driver: bridge
