@@ -9,7 +9,7 @@ Pod là một tập hợp logic của một hoặc nhiều container, bao bọc 
   Pod.
 - Có quyền truy cập để gắn kết (mount) cùng một bộ nhớ ngoài (volume) và các phụ thuộc chung khác.
 
-![pods.png](../images/pods.png)
+![pods.png](../../images/pods.png)
 
 Pods bản chất là tạm thời (ephemeral) và không có khả năng tự sửa chữa (self-heal).  
 Đó là lý do tại sao chúng được sử dụng với các bộ điều khiển (controller), hoặc các operator (hai khái niệm này có thể
@@ -56,7 +56,7 @@ Nhiều đối tượng có thể có chung Nhãn (label).
 Các nhãn không đảm bảo tính duy nhất cho các đối tượng. 
 Bộ điều khiển (controller) sử dụng nhãn để nhóm các đối tượng tách rời một cách hợp lý, thay vì sử dụng tên hoặc ID của đối tượng.
 
-![lables.png](../images/lables.png)
+![lables.png](../../images/lables.png)
 
 Trong hình ảnh trên, chúng ta đã sử dụng hai khóa nhãn: app và env. 
 Dựa trên yêu cầu của mình, chúng ta đã cung cấp các giá trị khác nhau cho bốn Pods. 
@@ -79,7 +79,7 @@ Kubernetes hỗ trợ hai loại Bộ chọn:
      + Với env in (dev,qa) chúng ta chọn các đối tượng có nhãn env được đặt thành dev hoặc qa.
      + Với !app chúng ta chọn các đối tượng không có khóa nhãn app.
 
-![selector.png](../images/selector.png)
+![selector.png](../../images/selector.png)
 
 # ReplicationControllers
 Mặc dù không còn được khuyến nghị sử dụng, ReplicationController là một operator phức tạp, đảm bảo một số lượng bản
@@ -117,7 +117,7 @@ cho là giống hệt nhau – chạy một thể hiện (instance) của cùng 
 danh tính – tên Pod, địa chỉ IP, và đối tượng Pod đảm bảo rằng ứng dụng có thể được đặt riêng lẻ vào bất kỳ nút worker
 nào của cụm do kết quả của quá trình lên lịch (scheduling).
 
-![replicaset.webp](../images/replicaset.webp)
+![replicaset.webp](../../images/replicaset.webp)
 
 ```yaml
 apiVersion: apps/v1
@@ -146,10 +146,10 @@ ReplicaSets (2)
 Hãy cùng tiếp tục với ví dụ ReplicaSet trước đó và giả sử rằng một trong các Pod bị buộc phải chấm dứt bất ngờ (do không đủ tài nguyên, timeout, node chứa nó gặp sự cố, v.v…), 
 khiến trạng thái thực tế không còn khớp với trạng thái mong muốn.
 
-![replicaSet1.png](../images/replicaSet1.png)
+![replicaSet1.png](../../images/replicaSet1.png)
 
 ReplicaSet sẽ phát hiện ra trạng thái thực tế không còn khớp với trạng thái mong muốn và kích hoạt yêu cầu tạo thêm một Pod, do đó đảm bảo trạng thái thực tế một lần nữa khớp với trạng thái mong muốn.
-![replicaSet2.png](../images/replicaSet2.png)
+![replicaSet2.png](../../images/replicaSet2.png)
 
 ReplicaSet có thể được sử dụng độc lập như bộ điều khiển Pod nhưng chúng chỉ cung cấp một tập hợp các tính năng hạn chế. 
 Deployments, loại bộ điều khiển được khuyến nghị sử dụng cho việc dàn xếp (orchestration) các Pod, cung cấp một tập hợp các tính năng bổ sung. 

@@ -64,7 +64,7 @@ một container image nginx:1.20.2.
 Trong trường hợp này, ReplicaSet A được liên kết với nginx:1.20.2 đại diện cho một trạng thái của Deployment.  
 Trạng thái cụ thể này được ghi lại là Bản sửa đổi (Revision) 1.
 
-![Deployment.png](../images/Deployment.png)
+![Deployment.png](../../images/Deployment.png)
 
 Theo thời gian, chúng ta cần cập nhật ứng dụng được quản lý bởi đối tượng Deployment. Giả sử chúng ta muốn thay đổi Pod
 Template và cập nhật ảnh container từ nginx:1.20.2 lên nginx:1.21.5. Deployment sẽ kích hoạt một ReplicaSet B mới cho
@@ -94,7 +94,7 @@ Khi rolling update đã hoàn tất, Deployment sẽ hiển thị cả ReplicaSe
 0 (zero) Pod và B được mở rộng lên 3 Pods.  
 Đây là cách Deployment ghi lại các cấu hình trạng thái trước đó của nó dưới dạng các Revision (Bản sửa đổi).  
 
-![deployment2.png](../images/deployment2.png)
+![deployment2.png](../../images/deployment2.png)
 
 Một khi ReplicaSet B và 3 Pods phiên bản 1.21.5 của nó đã sẵn sàng, Deployment bắt đầu quản lý chúng một cách chủ động.  
 Tuy nhiên, Deployment vẫn giữ lại cấu hình các trạng thái trước đó được lưu dưới dạng Revision (bản sửa đổi), đóng vai
@@ -103,6 +103,6 @@ trò then chốt trong khả năng rollback (khôi phục) của Deployment – 
 rollback (khôi phục) về Revision trước đó, trong trường hợp này là từ Revision 2 quay lại Revision 1 đang chạy nginx:
 1.20.2.  
 
-![deployment3.png](../images/deployment3.png)
+![deployment3.png](../../images/deployment3.png)
 
 
